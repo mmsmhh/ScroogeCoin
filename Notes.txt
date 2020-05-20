@@ -1,0 +1,93 @@
+output = ""
+100 user
+foreach user:
+	create PU & PR
+foreach user:
+	Scoorage.create,sign and add( 10 sc, user)
+
+output += foreach user :print PU & amount
+while sys is run (space not pressed):
+	UserA, UserB= random
+	trans1 = UserA.random_trans(coins[:random_amount] <= UserA.have, UserB)
+	# predefined ds & hash
+	trans1.sign(PR(UA))
+	UserA.notify(Scorage, trans1)
+	verify = Scorage.verify(trans1)
+	// verify with public key also verify the amount.
+	UserA.have -= random_amount
+	if(verify):
+		Scorage.acc(trans1)
+	Scorage.tempBlock.add(trans1)
+	output += print(Scorage.tempBlock with trans details)
+	if(len(Scorage.tempBlock) == 10):
+	
+		block = Scorage.formBlock(Scorage.tansc)
+		Scorage.cleartansc()
+		Scorage.attachtoBC(block) == Scorage.puplish()
+		output += print(Scorage.blockchain)
+		
+
+    # when space is pressed:
+		(output).save(txt)
+		break
+		sys.exit()
+	
+		
+##############---------------##############
+req:
+
+user:
+	PU
+	PR
+	coins
+	amount
+
+coin:
+	ID
+
+Scorage:
+	PU & PR
+	tempBlock
+	blockchain:
+		block:
+			10 valid trans
+			transaction:
+				ID
+				U1.ID
+				U2.ID
+				coins[]
+				signature
+				#spent?
+				hashtoprevioustrans
+				
+			ID
+			hash
+			hashPointerToThePreviousBlock
+			# @VAGUE The final hash pointer is signed by Scrooge.
+			
+		
+	verify(trans1):
+		//trans1.signature belongs to U1.ID
+		trans1.coins belongs to U1
+		not double spending
+		U1.coins.contains(coins)
+		//blockchain.notcontains(trans1.ID) & not in temp
+		
+		
+	
+##########--------------------##########
+
+ouput :
+
+initially foreach user : PU & amount
+print tempBlock
+print bc
+
+
+terminate using space
+
+
+
+
+
+
